@@ -1,0 +1,24 @@
+// Create db
+// npx prisma db push
+// Check db
+// npx prisma studio
+// Create migration prisma migrate dev --name init
+// If you schema change you must run
+// npx prisma generate
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Note {
+  id Int @id @default(autoincrement())
+  title String
+  content String
+  createdAt DateTime @default(now())
+}
+
